@@ -1,4 +1,4 @@
-(function (ng) {
+(function (angular) {
 
     'use strict';
 
@@ -422,11 +422,18 @@
             });
         };
 
+        BenchmarkAPI.createRespondent = function(id, o) {
+            return $http(_.merge({
+                method: 'post',
+                url: BASE_URL + '/surveys/' + id + '/respondents'
+            }, o));
+        };
+
         BenchmarkAPI.getRespondents = function(id, o) {
-            return $http({
+            return $http(_.merge({
                 method: 'get',
                 url: BASE_URL + '/surveys/' + id + '/respondents'
-            });
+            }, o));
         };
 
         return BenchmarkAPI;
