@@ -48,7 +48,7 @@
         BenchmarkAPI.getAgencies = function () {
             return $http({
                 method: 'get',
-                url: BASE_URL + '/agencies',
+                url: BASE_URL + '/agencies'
             });
         };
 
@@ -117,7 +117,7 @@
             return $http({
                 method: 'get',
                 url: BASE_URL + '/search/locations',
-                params: place,
+                params: place
             });
         };
 
@@ -268,7 +268,7 @@
         BenchmarkAPI.getAgencyTimeStats = function (o) {
             var options = {
                 method: 'get',
-                url: BASE_URL + '/agencies/' + agency_id + '/stats/quality_score',
+                url: BASE_URL + '/agencies/' + agency_id + '/stats/quality_score'
             };
             return $http(_.merge(options, o));
         };
@@ -276,7 +276,7 @@
         BenchmarkAPI.getLocationTimeStats = function (o) {
             var options = {
                 method: 'get',
-                url: BASE_URL + '/agencies/' + agency_id + '/locations/' + o.location_id + '/stats/quality_score',
+                url: BASE_URL + '/agencies/' + agency_id + '/locations/' + o.location_id + '/stats/quality_score'
             };
             return $http(_.merge(options, o));
         };
@@ -284,7 +284,7 @@
         BenchmarkAPI.getLocationCompetitorsTimeStats = function (o) {
             var options = {
                 method: 'get',
-                url: BASE_URL + '/agencies/' + agency_id + '/locations/' + o.location_id + '/competitors/stats/quality_score',
+                url: BASE_URL + '/agencies/' + agency_id + '/locations/' + o.location_id + '/competitors/stats/quality_score'
             };
             return $http(_.merge(options, o));
         };
@@ -292,7 +292,7 @@
         BenchmarkAPI.getAgencyReviews = function (o) {
             var options = {
                 method: 'get',
-                url: BASE_URL + '/agencies/' + agency_id + '/reviews',
+                url: BASE_URL + '/agencies/' + agency_id + '/reviews'
             };
             return $http(_.merge(options, o));
         };
@@ -300,7 +300,7 @@
         BenchmarkAPI.getLocationReviews = function (o, location_id) {
             var options = {
                 method: 'get',
-                url: BASE_URL + '/agencies/' + agency_id + '/locations/' + location_id + '/reviews',
+                url: BASE_URL + '/agencies/' + agency_id + '/locations/' + location_id + '/reviews'
             };
             return $http(_.merge(options, o));
         };
