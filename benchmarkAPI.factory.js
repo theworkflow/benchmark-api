@@ -2,8 +2,11 @@
 
     'use strict';
 
-    angular.modual('benchmarkAPI', [])
+    angular.module('bencmarkAPI', [])
         .factory('BenchmarkAPI', benchmarkAPI);
+
+
+// Benchmark API
 
     function benchmarkAPI($http, URLS, AuthService) {
         var BenchmarkAPI = {};
@@ -152,7 +155,7 @@
         BenchmarkAPI.getAgency = function (agency_id) {
             return $http({
                 method: 'get',
-                url: BASE_URL + '/agencies/' + agency_id,
+                url: BASE_URL + '/agencies/' + agency_id
             });
         };
 
@@ -398,6 +401,20 @@
             }, o));
         };
 
+        BenchmarkAPI.getRespondent = function(id) {
+            return $http({
+                method: 'get',
+                url: BASE_URL + '/respondents/' + id
+            });
+        };
+
+        BenchmarkAPI.getRespondentReport = function(id) {
+            return $http({
+                method: 'get',
+                url: BASE_URL + '/respondents/' + id + '/report'
+            });
+        };
+
         BenchmarkAPI.getSurvey = function(id) {
             return $http({
                 method: 'get',
@@ -421,4 +438,5 @@
 
         return BenchmarkAPI;
     }
+
 }(angular));
