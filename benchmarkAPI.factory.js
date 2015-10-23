@@ -1,14 +1,10 @@
-(function (angular) {
+(function (ng) {
 
     'use strict';
 
-    angular.module('benchmarkAPI', ['benchmark.auth'])
-        .factory('BenchmarkAPI', benchmarkAPI);
+    var module = ng.module('benchmarkAPI', ['benchmark.auth'])
 
-
-// Benchmark API
-
-    function benchmarkAPI($http, URLS, AuthService) {
+module.factory('BenchmarkAPI', function ($http, URLS, AuthService) {
         var BenchmarkAPI = {};
         var user = AuthService.getUser();
         var BASE_URL = URLS.BENCHMARK_API_URL;
@@ -437,6 +433,6 @@
         };
 
         return BenchmarkAPI;
-    }
+    });
 
 }(angular));
