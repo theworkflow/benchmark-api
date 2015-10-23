@@ -1,0 +1,15 @@
+{
+  "name": "benchmark-api",
+  "description": "Angular Javascript API to communicate with Benchmark's API via http.",
+  "main": "benchmarkAPI.factory.js",
+  "license": "MIT",
+  "ignore": [],
+  "keywords": [
+    "angular",
+    "benchmark Intelligence"
+  ],
+  "authors": [
+    "Benchmark Intelligence <founders@usebenchmark.com> (http://www.usebenchmark.com/)"
+  ],
+  "homepage": "https://github.com/usebenchmark/benchmark-api"
+}

@@ -2,7 +2,7 @@
 
     'use strict';
 
-    angular.module('bencmarkAPI', [])
+    angular.module('bencmarkAPI', ['benchmark.auth'])
         .factory('BenchmarkAPI', benchmarkAPI);
 
 
