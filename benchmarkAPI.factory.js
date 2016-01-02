@@ -11,14 +11,6 @@
     var REDUX_BASE_URL = URLS.BENCHMARK_API_REDUX_URL;
     var agency_id = user.agency_id;
 
-    BenchmarkAPI.getPlaces = function (o) {
-      var options = {
-        method: 'get',
-        url: BASE_URL + '/locations'
-      };
-      return $http(_.merge(options, o));
-    };
-
     BenchmarkAPI.getLocations = function () {
       return $http({
         method: 'get',
