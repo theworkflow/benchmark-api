@@ -455,10 +455,10 @@
       });
     };
 
-    BenchmarkAPI.updateRecommendation = function (recommendation) {
+    BenchmarkAPI.updateRecommendation = function (id, recommendation) {
       return $http({
         method: 'patch',
-        url: REDUX_BASE_URL + '/recommendations/' + recommendation._id,
+        url: REDUX_BASE_URL + '/recommendations/' + id,
         data: recommendation
       });
     };
