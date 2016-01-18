@@ -1,0 +1,23 @@
+{
+  "name": "benchmark-api",
+  "version": "0.0.1",
+  "description": "benchmark api",
+  "main": "benchmarkAPI.factory.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/usebenchmark/benchmark-api.git"
+  },
+  "author": "cofounders@usebenchmark.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/usebenchmark/benchmark-api/issues"
+  },
+  "homepage": "https://github.com/usebenchmark/benchmark-api#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-bump": "^1.0.0"
+  }
+}
