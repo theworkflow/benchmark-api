@@ -1,5 +1,4 @@
 (function (ng) {
-
   'use strict';
 
   var module = ng.module('benchmarkAPI', ['benchmark.auth']);
@@ -324,35 +323,6 @@
       }, o));
     };
 
-    BenchmarkAPI.getAgencySurveys = function () {
-      return $http({
-        method: 'get',
-        url: BASE_URL + '/agencies/' + agency_id + '/surveys'
-      });
-    };
-
-    BenchmarkAPI.createSurvey = function (o) {
-      o.data.agency_id = agency_id;
-      return $http(_.merge({
-        method: 'post',
-        url: BASE_URL + '/agencies/' + agency_id + '/surveys'
-      }, o));
-    };
-
-    BenchmarkAPI.removeSurvey = function (id) {
-      return $http({
-        method: 'delete',
-        url: BASE_URL + '/surveys/' + id
-      });
-    };
-
-    BenchmarkAPI.updateSurvey = function (id, o) {
-      return $http(_.merge({
-        method: 'put',
-        url: BASE_URL + '/surveys/' + id
-      }, o));
-    };
-
     BenchmarkAPI.getRespondent = function (id) {
       return $http({
         method: 'get',
@@ -364,13 +334,6 @@
       return $http({
         method: 'get',
         url: BASE_URL + '/respondents/' + id + '/report'
-      });
-    };
-
-    BenchmarkAPI.getSurvey = function (id) {
-      return $http({
-        method: 'get',
-        url: BASE_URL + '/surveys/' + id
       });
     };
 
@@ -461,6 +424,41 @@
         url: REDUX_BASE_URL + '/recommendations/' + id,
         data: recommendation
       });
+    };
+
+    BenchmarkAPI.getSurveys = function () {
+      return $http({
+        method: 'get',
+        url: REDUX_BASE_URL + '/surveys'
+      });
+    };
+
+    BenchmarkAPI.getSurvey = function (id) {
+      return $http({
+        method: 'get',
+        url: REDUX_BASE_URL + '/surveys/' + id
+      });
+    };
+
+    BenchmarkAPI.createSurvey = function (o) {
+      return $http(_.merge({
+        method: 'post',
+        url: REDUX_BASE_URL + '/surveys'
+      }, o));
+    };
+
+    BenchmarkAPI.removeSurvey = function (id) {
+      return $http({
+        method: 'delete',
+        url: REDUX_BASE_URL + '/surveys/' + id
+      });
+    };
+
+    BenchmarkAPI.updateSurvey = function (id, o) {
+      return $http(_.merge({
+        method: 'put',
+        url: REDUX_BASE_URL + '/surveys/' + id
+      }, o));
     };
 
     return BenchmarkAPI;
