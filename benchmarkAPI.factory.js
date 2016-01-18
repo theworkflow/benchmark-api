@@ -1,5 +1,4 @@
 (function (ng) {
-
   'use strict';
 
   var module = ng.module('benchmarkAPI', ['benchmark.auth']);
@@ -387,6 +386,43 @@
         method: 'patch',
         url: REDUX_BASE_URL + '/agencies/' + agency._id,
         data: agency
+      });
+    };
+
+    BenchmarkAPI.getRecommendations = function () {
+      return $http({
+        method: 'get',
+        url: REDUX_BASE_URL + '/recommendations'
+      });
+    };
+
+    BenchmarkAPI.createRecommendations = function (recommendation) {
+      return $http({
+        method: 'post',
+        url: REDUX_BASE_URL + '/recommendations',
+        data: recommendation
+      });
+    };
+
+    BenchmarkAPI.getRecommendation = function (id) {
+      return $http({
+        method: 'get',
+        url: REDUX_BASE_URL + '/recommendations/' + id
+      });
+    };
+
+    BenchmarkAPI.deleteRecommendation = function (id) {
+      return $http({
+        method: 'delete',
+        url: REDUX_BASE_URL + '/recommendations/' + id
+      });
+    };
+
+    BenchmarkAPI.updateRecommendation = function (id, recommendation) {
+      return $http({
+        method: 'patch',
+        url: REDUX_BASE_URL + '/recommendations/' + id,
+        data: recommendation
       });
     };
 
