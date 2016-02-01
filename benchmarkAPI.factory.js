@@ -322,35 +322,6 @@
         url: BASE_URL + '/notifications/' + id
       }, o));
     };
-
-    BenchmarkAPI.getRespondent = function (id) {
-      return $http({
-        method: 'get',
-        url: BASE_URL + '/respondents/' + id
-      });
-    };
-
-    BenchmarkAPI.getRespondentReport = function (id) {
-      return $http({
-        method: 'get',
-        url: BASE_URL + '/respondents/' + id + '/report'
-      });
-    };
-
-    BenchmarkAPI.createRespondent = function (id, o) {
-      return $http(_.merge({
-        method: 'post',
-        url: BASE_URL + '/surveys/' + id + '/respondents'
-      }, o));
-    };
-
-    BenchmarkAPI.getRespondents = function (id, o) {
-      return $http(_.merge({
-        method: 'get',
-        url: BASE_URL + '/surveys/' + id + '/respondents'
-      }, o));
-    };
-
     // API-REDUX ENDPOINTS
     BenchmarkAPI.getAgency = function (agency_id) {
       return $http({
@@ -460,6 +431,35 @@
         url: REDUX_BASE_URL + '/surveys/' + id
       }, o));
     };
+
+    BenchmarkAPI.getRespondent = function (id) {
+      return $http({
+        method: 'get',
+        url: REDUX_BASE_URL + '/respondents/' + id
+      });
+    };
+
+    BenchmarkAPI.getRespondentReport = function (id) {
+      return $http({
+        method: 'get',
+        url: REDUX_BASE_URL + '/respondents/' + id + '/report'
+      });
+    };
+
+    BenchmarkAPI.createRespondent = function (id, o) {
+      return $http(_.merge({
+        method: 'post',
+        url: REDUX_BASE_URL + '/surveys/' + id + '/respondents'
+      }, o));
+    };
+
+    BenchmarkAPI.getRespondents = function (id, o) {
+      return $http(_.merge({
+        method: 'get',
+        url: REDUX_BASE_URL + '/surveys/' + id + '/respondents'
+      }, o));
+    };
+
 
     return BenchmarkAPI;
   });
