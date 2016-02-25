@@ -241,9 +241,10 @@
     };
 
     BenchmarkAPI.getAgencyReviews = function (o) {
+      var agency = o.agency_id ? o.agency_id : agency_id;
       var options = {
         method: 'get',
-        url: BASE_URL + '/agencies/' + agency_id + '/reviews'
+        url: BASE_URL + '/agencies/' + agency + '/reviews'
       };
       return $http(_.merge(options, o));
     };
