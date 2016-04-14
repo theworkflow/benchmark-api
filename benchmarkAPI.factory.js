@@ -463,5 +463,4 @@
 
     return BenchmarkAPI;
   });
-
 }(angular));
