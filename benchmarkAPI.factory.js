@@ -281,14 +281,6 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.generateSurveyNumber = function (o, location_id) {
-      var options = {
-        method: 'post',
-        url: BASE_URL + '/locations/' + location_id + '/twilio_number'
-      };
-      return $http(_.merge(options, o));
-    };
-
     BenchmarkAPI.getAgencyReviewFilters = function (o) {
       return $http(_.merge({
         method: 'get',
@@ -461,6 +453,13 @@
       }, o));
     };
 
+    BenchmarkAPI.generateSurveyNumber = function (o, location_id) {
+      var options = {
+        method: 'post',
+        url: REDUX_BASE_URL + '/locations/' + location_id + '/twilio_number'
+      };
+      return $http(_.merge(options, o));
+    };
 
     return BenchmarkAPI;
   });
