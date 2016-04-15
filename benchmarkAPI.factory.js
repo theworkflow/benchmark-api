@@ -461,6 +461,27 @@
       return $http(_.merge(options, o));
     };
 
+    BenchmarkAPI.getBlacklist = function () {
+      return $http({
+        method: 'get',
+        url: REDUX_BASE_URL + '/blacklist'
+      });
+    };
+
+    BenchmarkAPI.addBlacklist = function (o) {
+      return $http(_.merge({
+        method: 'post',
+        url: REDUX_BASE_URL + '/blacklist'
+      }, o));
+    };
+
+    BenchmarkAPI.removeBlacklist = function (id) {
+      return $http({
+        method: 'delete',
+        url: REDUX_BASE_URL + '/blacklist/' + id
+      });
+    };
+
     return BenchmarkAPI;
   });
 }(angular));
