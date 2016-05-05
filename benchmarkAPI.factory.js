@@ -171,36 +171,6 @@
       });
     };
 
-    BenchmarkAPI.getCompetitors = function (agency_id) {
-      return $http({
-        method: 'get',
-        url: BASE_URL + '/agencies/' + agency_id + '/competitors'
-      });
-    };
-
-    BenchmarkAPI.createCompetitor = function (competitor) {
-      return $http({
-        method: 'post',
-        url: BASE_URL + '/competitors',
-        data: competitor
-      });
-    };
-
-    BenchmarkAPI.removeCompetitor = function (competitor_id) {
-      return $http({
-        method: 'delete',
-        url: BASE_URL + '/competitors/' + competitor_id
-      });
-    };
-
-    BenchmarkAPI.updateCompetitor = function (competitor) {
-      return $http({
-        method: 'put',
-        url: BASE_URL + '/competitors/' + competitor._id,
-        data: competitor
-      });
-    };
-
     BenchmarkAPI.removeUser = function (id) {
       return $http({
         method: 'delete',
@@ -479,6 +449,36 @@
       return $http({
         method: 'delete',
         url: REDUX_BASE_URL + '/blacklist/' + id
+      });
+    };
+
+    BenchmarkAPI.getCompetitors = function (agency_id) {
+      return $http({
+        method: 'get',
+        url: REDUX_BASE_URL + '/agencies/' + agency_id + '/competitors'
+      });
+    };
+
+    BenchmarkAPI.createCompetitor = function (competitor) {
+      return $http({
+        method: 'post',
+        url: REDUX_BASE_URL + '/competitors',
+        data: competitor
+      });
+    };
+
+    BenchmarkAPI.removeCompetitor = function (competitor_id) {
+      return $http({
+        method: 'delete',
+        url: REDUX_BASE_URL + '/competitors/' + competitor_id
+      });
+    };
+
+    BenchmarkAPI.updateCompetitor = function (competitor) {
+      return $http({
+        method: 'put',
+        url: REDUX_BASE_URL + '/competitors/' + competitor._id,
+        data: competitor
       });
     };
 
