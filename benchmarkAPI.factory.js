@@ -132,38 +132,6 @@
       });
     };
 
-    BenchmarkAPI.getUsers = function (o) {
-      var options = {
-        method: 'get',
-        url: BASE_URL + '/users'
-      };
-      return $http(_.merge(options, o));
-    };
-
-    BenchmarkAPI.getUser = function (o, id) {
-      var options = {
-        method: 'get',
-        url: BASE_URL + '/users/' + id
-      };
-      return $http(_.merge(options, o));
-    };
-
-    BenchmarkAPI.updateUser = function (o, user_id) {
-      var options = {
-        method: 'patch',
-        url: BASE_URL + '/users/' + user_id
-      };
-      return $http(_.merge(options, o));
-    };
-
-    BenchmarkAPI.createUser = function (user) {
-      return $http({
-        method: 'post',
-        url: BASE_URL + '/users',
-        data: user
-      });
-    };
-
     BenchmarkAPI.getLocationCompetitors = function (agency_id, location_id) {
       return $http({
         method: 'get',
@@ -479,6 +447,38 @@
         method: 'put',
         url: REDUX_BASE_URL + '/competitors/' + competitor._id,
         data: competitor
+      });
+    };
+
+    BenchmarkAPI.getUsers = function (o) {
+      var options = {
+        method: 'get',
+        url: REDUX_BASE_URL + '/users'
+      };
+      return $http(_.merge(options, o));
+    };
+
+    BenchmarkAPI.getUser = function (o, id) {
+      var options = {
+        method: 'get',
+        url: REDUX_BASE_URL + '/users/' + id
+      };
+      return $http(_.merge(options, o));
+    };
+
+    BenchmarkAPI.updateUser = function (o, user_id) {
+      var options = {
+        method: 'patch',
+        url: REDUX_BASE_URL + '/users/' + user_id
+      };
+      return $http(_.merge(options, o));
+    };
+
+    BenchmarkAPI.createUser = function (user) {
+      return $http({
+        method: 'post',
+        url: REDUX_BASE_URL + '/users',
+        data: user
       });
     };
 
