@@ -49,7 +49,7 @@
       });
     };
 
-    BenchmarkAPI.getLocation = function (location_id) {
+    BenchmarkAPI.getLocation = function (agency_id, location_id) {
       return $http({
         method: 'get',
         url: BASE_URL + '/agencies/' + agency_id + '/locations/' + location_id
