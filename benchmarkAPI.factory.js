@@ -139,13 +139,6 @@
       });
     };
 
-    BenchmarkAPI.removeUser = function (id) {
-      return $http({
-        method: 'delete',
-        url: BASE_URL + '/users/' + id
-      });
-    };
-
     BenchmarkAPI.connectLocation = function (agency_id, location) {
       return $http({
         method: 'post',
@@ -479,6 +472,13 @@
         method: 'post',
         url: REDUX_BASE_URL + '/users',
         data: user
+      });
+    };
+
+    BenchmarkAPI.removeUser = function (id) {
+      return $http({
+        method: 'delete',
+        url: REDUX_BASE_URL + '/users/' + id
       });
     };
 
