@@ -1,7 +1,7 @@
 {
   "name": "benchmark-api",
   "description": "Angular Javascript API to communicate with Benchmark's API via http.",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "main": "benchmarkAPI.factory.js",
   "license": "MIT",
   "ignore": [],
