@@ -50,7 +50,7 @@
     };
 
     BenchmarkAPI.getLocation = function (location_id) {
-      var agency_id = Authserver.getUser().agency_id;
+      var agency_id = Authservice.getUser().agency_id;
       return $http({
         method: 'get',
         url: BASE_URL + '/agencies/' + agency_id + '/locations/' + location_id
