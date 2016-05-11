@@ -10,13 +10,6 @@
     var REDUX_BASE_URL = URLS.BENCHMARK_API_REDUX_URL;
     var agency_id = user.agency_id;
 
-    BenchmarkAPI.getLocations = function () {
-      return $http({
-        method: 'get',
-        url: BASE_URL + '/locations'
-      });
-    };
-
     BenchmarkAPI.createProvider = function (location_id, provider) {
       return $http({
         method: 'post',
@@ -480,6 +473,13 @@
       return $http({
         method: 'delete',
         url: REDUX_BASE_URL + '/users/' + id
+      });
+    };
+
+    BenchmarkAPI.getLocations = function () {
+      return $http({
+        method: 'get',
+        url: REDUX_BASE_URL + '/locations'
       });
     };
 
