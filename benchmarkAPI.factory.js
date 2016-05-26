@@ -378,10 +378,10 @@
       }, o));
     };
 
-    BenchmarkAPI.generateSurveyNumber = function (o, location_id) {
+    BenchmarkAPI.generateSurveyNumber = function (o, id) {
       var options = {
         method: 'post',
-        url: REDUX_BASE_URL + '/locations/' + location_id + '/twilio_number'
+        url: REDUX_BASE_URL + '/agencies_locations/' + id + '/twilio_number'
       };
       return $http(_.merge(options, o));
     };
