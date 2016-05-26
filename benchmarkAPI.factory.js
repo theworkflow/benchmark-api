@@ -483,7 +483,7 @@
       });
     };
 
-    BenchmarkAPI.listAgenciesLocations = function () {
+    BenchmarkAPI.listAgenciesLocations = function (o) {
       var options = {
         method: 'get',
         url: REDUX_BASE_URL + '/agencies_locations'
