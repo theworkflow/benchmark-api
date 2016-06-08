@@ -182,14 +182,6 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.getAgencyReviewTrends = function (o) {
-      var options = {
-        method: 'get',
-        url: BASE_URL + '/agencies/' + agency_id + '/keywords'
-      };
-      return $http(_.merge(options, o));
-    };
-
     BenchmarkAPI.getLocationReviewTrends = function (o, location_id) {
       var options = {
         method: 'get',
