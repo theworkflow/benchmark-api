@@ -50,13 +50,6 @@
       });
     };
 
-    BenchmarkAPI.getAgencyLocations = function (agency_id) {
-      return $http({
-        method: 'get',
-        url: BASE_URL + '/agencies/' + agency_id + '/locations'
-      });
-    };
-
     BenchmarkAPI.contactSupport = function (contact) {
       return $http({
         method: 'post',
@@ -164,16 +157,7 @@
       };
       return $http(_.merge(options, o));
     };
-
-    BenchmarkAPI.getAgencyReviews = function (o) {
-      var agency = o.agency_id ? o.agency_id : agency_id;
-      var options = {
-        method: 'get',
-        url: BASE_URL + '/agencies/' + agency + '/reviews'
-      };
-      return $http(_.merge(options, o));
-    };
-
+    
     BenchmarkAPI.getLocationReviews = function (o, location_id) {
       var options = {
         method: 'get',
@@ -198,27 +182,6 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.getAgencyReviewFilters = function (o) {
-      return $http(_.merge({
-        method: 'get',
-        url: BASE_URL + '/agencies/' + agency_id + '/reviews/filters'
-      }, o));
-    };
-
-    BenchmarkAPI.createReviewFilter = function (o) {
-      return $http(_.merge({
-        method: 'post',
-        url: BASE_URL + '/review_filters'
-      }, o));
-    };
-
-    BenchmarkAPI.removeReviewFilter = function (id, o) {
-      return $http(_.merge({
-        method: 'delete',
-        url: BASE_URL + '/review_filters/' + id
-      }, o));
-    };
-
     BenchmarkAPI.getNotifications = function (id) {
       return $http({
         method: 'get',
@@ -232,6 +195,7 @@
         url: BASE_URL + '/notifications/' + id
       }, o));
     };
+    
     // API-REDUX ENDPOINTS
     BenchmarkAPI.getAgency = function (agency_id) {
       return $http({
@@ -481,6 +445,36 @@
         url: REDUX_BASE_URL + '/agencies_locations'
       };
       return $http(_.merge(options, o));
+    };
+
+    BenchmarkAPI.getAgencyReviews = function (o) {
+      var agency = o.agency_id ? o.agency_id : agency_id;
+      var options = {
+        method: 'get',
+        url: REDUX_BASE_URL + '/agencies/' + agency + '/reviews'
+      };
+      return $http(_.merge(options, o));
+    };
+
+    BenchmarkAPI.getAgencyReviewFilters = function (o) {
+      return $http(_.merge({
+        method: 'get',
+        url: REDUX_BASE_URL + '/agencies/' + agency_id + '/reviews/filters'
+      }, o));
+    };
+
+    BenchmarkAPI.createReviewFilter = function (o) {
+      return $http(_.merge({
+        method: 'post',
+        url: REDUX_BASE_URL + '/review_filters'
+      }, o));
+    };
+
+    BenchmarkAPI.removeReviewFilter = function (id, o) {
+      return $http(_.merge({
+        method: 'delete',
+        url: REDUX_BASE_URL + '/review_filters/' + id
+      }, o));
     };
 
     return BenchmarkAPI;
