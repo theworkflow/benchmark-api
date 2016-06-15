@@ -42,14 +42,6 @@
       });
     };
 
-    BenchmarkAPI.getLocation = function (location_id) {
-      var agency_id = AuthService.getUser().agency_id;
-      return $http({
-        method: 'get',
-        url: BASE_URL + '/agencies/' + agency_id + '/locations/' + location_id
-      });
-    };
-
     BenchmarkAPI.contactSupport = function (contact) {
       return $http({
         method: 'post',
@@ -475,6 +467,13 @@
         method: 'delete',
         url: REDUX_BASE_URL + '/review_filters/' + id
       }, o));
+    };
+
+    BenchmarkAPI.getLocation = function (location_id) {
+      return $http({
+        method: 'get',
+        url: REDUX_BASE_URL + '/agencies_locations/' + location_id
+      });
     };
 
     return BenchmarkAPI;
