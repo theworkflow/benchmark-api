@@ -431,12 +431,14 @@
       });
     };
 
-    BenchmarkAPI.listAgenciesLocations = function (o) {
+    BenchmarkAPI.listAgenciesLocations = function (agency_id) {
       var options = {
         method: 'get',
         url: REDUX_BASE_URL + '/agencies_locations'
       };
-      return $http(_.merge(options, o));
+      if (agency_id)
+        options.params = {agency_id: agency_id};
+      return $http(options);
     };
 
     BenchmarkAPI.getAgencyReviews = function (o) {
