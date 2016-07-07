@@ -424,11 +424,12 @@
       });
     };
 
-    BenchmarkAPI.getLocations = function () {
-      return $http({
+    BenchmarkAPI.getLocations = function (o) {
+      var options = {
         method: 'get',
         url: REDUX_BASE_URL + '/locations'
-      });
+      };
+      return $http(_.merge(options, o));
     };
 
     BenchmarkAPI.listAgenciesLocations = function (agency_id) {
