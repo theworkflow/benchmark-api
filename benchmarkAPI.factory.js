@@ -308,7 +308,7 @@
     BenchmarkAPI.listRespondents = function(o) {
       return $http(_.merge({
         method: 'get',
-        url: REDUX_BASE_URL + '/respondents';
+        url: REDUX_BASE_URL + '/respondents'
       }));
     };
 
