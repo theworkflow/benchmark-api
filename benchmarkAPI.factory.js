@@ -445,7 +445,7 @@
         url: REDUX_BASE_URL + '/agencies_locations'
       };
       if (agency_id)
-        options.params = {agency_id: agency_id};
+        options.params = {agency_id: agency_id, limit: 100000};
       return $http(options);
     };
 
