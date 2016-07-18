@@ -309,7 +309,7 @@
       return $http(_.merge({
         method: 'get',
         url: REDUX_BASE_URL + '/respondents'
-      }));
+      }, o));
     };
 
     BenchmarkAPI.getRespondentReport = function (id) {
