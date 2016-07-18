@@ -305,6 +305,13 @@
       });
     };
 
+    BenchmarkAPI.listRespondents = function(o) {
+      return $http(_.merge({
+        method: 'get',
+        url: REDUX_BASE_URL + '/respondents';
+      }));
+    };
+
     BenchmarkAPI.getRespondentReport = function (id) {
       return $http({
         method: 'get',
