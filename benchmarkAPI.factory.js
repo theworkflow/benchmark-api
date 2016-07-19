@@ -149,7 +149,7 @@
       };
       return $http(_.merge(options, o));
     };
-    
+
     BenchmarkAPI.getLocationReviews = function (o, location_id) {
       var options = {
         method: 'get',
@@ -187,7 +187,7 @@
         url: BASE_URL + '/notifications/' + id
       }, o));
     };
-    
+
     // API-REDUX ENDPOINTS
     BenchmarkAPI.getAgency = function (agency_id) {
       return $http({
@@ -323,6 +323,13 @@
       return $http(_.merge({
         method: 'post',
         url: REDUX_BASE_URL + '/surveys/' + id + '/respondents'
+      }, o));
+    };
+
+    BenchmarkAPI.updateRespondent = function (id, o) {
+      return $http(_.merge({
+        method: 'patch',
+        url: REDUX_BASE_URL + '/respondents/' + id
       }, o));
     };
 
