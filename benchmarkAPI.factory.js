@@ -449,7 +449,10 @@
     BenchmarkAPI.listAgenciesLocations = function (agency_id) {
       var options = {
         method: 'get',
-        url: REDUX_BASE_URL + '/agencies_locations'
+        url: REDUX_BASE_URL + '/agencies_locations',
+        params: {
+          limit: 100000
+        }
       };
       if (agency_id)
         options.params = {agency_id: agency_id, limit: 100000};
