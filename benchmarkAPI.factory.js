@@ -263,11 +263,11 @@
       });
     };
 
-    BenchmarkAPI.getSurveys = function () {
-      return $http({
+    BenchmarkAPI.getSurveys = function (o) {
+      return $http(_.merge({
         method: 'get',
         url: REDUX_BASE_URL + '/surveys'
-      });
+      }, o));
     };
 
     BenchmarkAPI.getSurvey = function (id) {
