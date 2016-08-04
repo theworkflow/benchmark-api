@@ -196,11 +196,11 @@
       });
     };
 
-    BenchmarkAPI.getAgencies = function () {
-      return $http({
+    BenchmarkAPI.getAgencies = function (o) {
+      return $http(_.merge({
         method: 'get',
         url: REDUX_BASE_URL + '/agencies'
-      });
+      }, o));
     };
 
     BenchmarkAPI.createAgency = function (agency) {
