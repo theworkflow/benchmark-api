@@ -13,7 +13,7 @@
     BenchmarkAPI.createProvider = function (location_id, provider) {
       return $http({
         method: 'post',
-        url: BASE_URL + '/locations/' + location_id + '/providers',
+        url: `${BASE_URL}/locations/${location_id}/providers`,
         data: provider
       });
     };
@@ -21,7 +21,7 @@
     BenchmarkAPI.createLocation = function (location) {
       return $http({
         method: 'post',
-        url: BASE_URL + '/locations',
+        url: `${BASE_URL}/locations`,
         data: location
       });
     };
@@ -29,7 +29,7 @@
     BenchmarkAPI.updateLocation = function (location) {
       return $http({
         method: 'put',
-        url: BASE_URL + '/locations/' + location._id,
+        url: `${BASE_URL}/locations/${location._id}`,
         data: location
       });
     };
@@ -37,7 +37,7 @@
     BenchmarkAPI.updateCompanyLocation = function (agency_id, location) {
       return $http({
         method: 'put',
-        url: BASE_URL + '/agencies/' + agency_id + '/locations/' + location._id,
+        url: `${BASE_URL}/agencies/${agency_id}/locations/${location._id}`,
         data: location
       });
     };
@@ -45,7 +45,7 @@
     BenchmarkAPI.contactSupport = function (contact) {
       return $http({
         method: 'post',
-        url: BASE_URL + '/support_requests',
+        url: `${BASE_URL}/support_requests`,
         data: contact
       });
     };
@@ -53,23 +53,23 @@
     BenchmarkAPI.searchPlace = function (place) {
       return $http({
         method: 'get',
-        url: BASE_URL + '/search/locations',
+        url: `${BASE_URL}/search/locations`,
         params: place
       });
     };
 
     BenchmarkAPI.scheduleSummaries = function (o) {
-      var options = {
+      let options = {
         method: 'get',
-        url: BASE_URL + '/run/summaries'
+        url: `${BASE_URL}/run/summaries`,
       };
       return $http(_.merge(options, o));
     };
 
     BenchmarkAPI.scheduleInsights = function (o) {
-      var options = {
+      let options = {
         method: 'get',
-        url: BASE_URL + '/run/insights'
+        url: `${BASE_URL}/run/insights`,
       };
       return $http(_.merge(options, o));
     };
@@ -77,99 +77,99 @@
     BenchmarkAPI.runSentimentAnalysis = function () {
       return $http({
         method: 'get',
-        url: BASE_URL + '/run/reviews'
+        url: `${BASE_URL}/run/reviews`
       });
     };
 
     BenchmarkAPI.runLocationSentimentAnalysis = function (location_id) {
       return $http({
         method: 'get',
-        url: BASE_URL + '/run/reviews',
-        params: {location_id: location_id}
+        url: `${BASE_URL}/run/reviews`,
+        params: { location_id: location_id }
       });
     };
 
     BenchmarkAPI.getStats = function () {
       return $http({
         method: 'get',
-        url: BASE_URL + '/insights',
-        params: {agency_id: agency_id, sort: '-created_on', limit: 1}
+        url: `${BASE_URL}/insights`,
+        params: { agency_id: agency_id, sort: '-created_on', limit: 1 }
       });
     };
 
     BenchmarkAPI.removeCompanyLocation = function (agency_id, location_id) {
       return $http({
         method: 'delete',
-        url: BASE_URL + '/agencies/' + agency_id + '/locations/' + location_id
+        url: `${BASE_URL}/agencies/${agency_id}/locations/${location_id}`
       });
     };
 
     BenchmarkAPI.removeLocation = function (location) {
       return $http({
         method: 'delete',
-        url: BASE_URL + '/locations/' + location._id
+        url: `${BASE_URL}/locations/${location._id}`
       });
     };
 
     BenchmarkAPI.getLocationCompetitors = function (agency_id, location_id) {
       return $http({
         method: 'get',
-        url: BASE_URL + '/agencies/' + agency_id + '/locations/' + location_id + '/competitors'
+        url: `${BASE_URL}/agencies/${agency_id}/locations/${location_id}/competitors`
       });
     };
 
     BenchmarkAPI.connectLocation = function (agency_id, location) {
       return $http({
         method: 'post',
-        url: BASE_URL + '/agencies/' + agency_id + '/locations/' + location.selected._id,
+        url: `${BASE_URL}/agencies/${agency_id}/locations/${location.selected._id}`,
         data: location
       });
     };
 
     BenchmarkAPI.getAgencyTimeStats = function (o) {
-      var options = {
+      let options = {
         method: 'get',
-        url: BASE_URL + '/agencies/' + agency_id + '/stats/quality_score'
+        url: `${BASE_URL}/agencies/${agency_id}/stats/quality_score`
       };
       return $http(_.merge(options, o));
     };
 
     BenchmarkAPI.getLocationTimeStats = function (o) {
-      var options = {
+      let options = {
         method: 'get',
-        url: BASE_URL + '/agencies/' + agency_id + '/locations/' + o.location_id + '/stats/quality_score'
+        url: `${BASE_URL}/agencies/${agency_id}/locations/${o.location_id}/stats/quality_score`
       };
       return $http(_.merge(options, o));
     };
 
     BenchmarkAPI.getLocationCompetitorsTimeStats = function (o) {
-      var options = {
+      let options = {
         method: 'get',
-        url: BASE_URL + '/agencies/' + agency_id + '/locations/' + o.location_id + '/competitors/stats/quality_score'
+        url: `${BASE_URL}/agencies/${agency_id}/locations/${o.location_id}/competitors/stats/quality_score`
       };
       return $http(_.merge(options, o));
     };
 
     BenchmarkAPI.getLocationReviews = function (o, location_id) {
-      var options = {
+      let options = {
         method: 'get',
-        url: BASE_URL + '/agencies/' + agency_id + '/locations/' + location_id + '/reviews'
+        url: `${BASE_URL}/agencies/${agency_id}/locations/${location_id}/reviews`
       };
       return $http(_.merge(options, o));
     };
 
     BenchmarkAPI.getLocationReviewTrends = function (o, location_id) {
-      var options = {
+      let options = {
         method: 'get',
-        url: BASE_URL + '/agencies/' + agency_id + '/locations/' + location_id + '/keywords'
+        url: `${BASE_URL}/agencies/${agency_id}/locations/${location_id}/keywords`
       };
       return $http(_.merge(options, o));
     };
 
     BenchmarkAPI.correctSentiment = function (o) {
-      var options = {
+      let options = {
         method: 'post',
-        url: BASE_URL + '/agencies/' + agency_id + '/sentiment_corrections'
+        url: `${BASE_URL}/agencies/${agency_id}/sentiment_corrections`
       };
       return $http(_.merge(options, o));
     };
@@ -177,36 +177,38 @@
     BenchmarkAPI.getNotifications = function (id) {
       return $http({
         method: 'get',
-        url: BASE_URL + '/users/' + id + '/notifications'
+        url: `${BASE_URL}/users/${id}/notifications`
       });
     };
 
     BenchmarkAPI.updateNotification = function (id, o) {
-      return $http(_.merge({
+      let options = {
         method: 'patch',
-        url: BASE_URL + '/notifications/' + id
-      }, o));
+        url: `${BASE_URL}/notifications/${id}`
+      };
+      return $http(_.merge(options, o));
     };
 
     // API-REDUX ENDPOINTS
     BenchmarkAPI.getAgency = function (agency_id) {
       return $http({
         method: 'get',
-        url: REDUX_BASE_URL + '/agencies/' + agency_id
+        url: `${REDUX_BASE_URL}/agencies/${agency_id}`
       });
     };
 
     BenchmarkAPI.getAgencies = function (o) {
-      return $http(_.merge({
+      let options = {
         method: 'get',
-        url: REDUX_BASE_URL + '/agencies'
-      }, o));
+        url: `${REDUX_BASE_URL}/agencies`
+      };
+      return $http(_.merge(options, o));
     };
 
     BenchmarkAPI.createAgency = function (agency) {
       return $http({
         method: 'post',
-        url: REDUX_BASE_URL + '/agencies',
+        url: `${REDUX_BASE_URL}/agencies`,
         data: agency
       });
     };
@@ -214,14 +216,14 @@
     BenchmarkAPI.removeAgency = function (id) {
       return $http({
         method: 'delete',
-        url: REDUX_BASE_URL + '/agencies/' + id
+        url: `${REDUX_BASE_URL}/agencies/${id}`
       });
     };
 
     BenchmarkAPI.updateAgency = function (agency) {
       return $http({
         method: 'patch',
-        url: REDUX_BASE_URL + '/agencies/' + agency._id,
+        url: `${REDUX_BASE_URL}/agencies/${agency._id}`
         data: agency
       });
     };
@@ -229,14 +231,14 @@
     BenchmarkAPI.getRecommendations = function () {
       return $http({
         method: 'get',
-        url: REDUX_BASE_URL + '/recommendations'
+        url: `${REDUX_BASE_URL}/recommendations`
       });
     };
 
     BenchmarkAPI.createRecommendations = function (recommendation) {
       return $http({
         method: 'post',
-        url: REDUX_BASE_URL + '/recommendations',
+        url: `${REDUX_BASE_URL}/recommendations`,
         data: recommendation
       });
     };
@@ -244,106 +246,113 @@
     BenchmarkAPI.getRecommendation = function (id) {
       return $http({
         method: 'get',
-        url: REDUX_BASE_URL + '/recommendations/' + id
+        url: `${REDUX_BASE_URL}/recommendations/${id}`
       });
     };
 
     BenchmarkAPI.deleteRecommendation = function (id) {
       return $http({
         method: 'delete',
-        url: REDUX_BASE_URL + '/recommendations/' + id
+        url: `${REDUX_BASE_URL}/recommendations/${id}`
       });
     };
 
     BenchmarkAPI.updateRecommendation = function (id, recommendation) {
       return $http({
         method: 'patch',
-        url: REDUX_BASE_URL + '/recommendations/' + id,
+        url: `${REDUX_BASE_URL}/recommendations/${id}`,
         data: recommendation
       });
     };
 
     BenchmarkAPI.getSurveys = function (o) {
-      return $http(_.merge({
+      let options = {
         method: 'get',
-        url: REDUX_BASE_URL + '/surveys'
-      }, o));
+        url: `${REDUX_BASE_URL}/surveys`
+      };
+      return $http(_.merge(options, o));
     };
 
     BenchmarkAPI.getSurvey = function (id) {
       return $http({
         method: 'get',
-        url: REDUX_BASE_URL + '/surveys/' + id
+        url: `${REDUX_BASE_URL}/surveys/${id}`
       });
     };
 
     BenchmarkAPI.createSurvey = function (o) {
-      return $http(_.merge({
+      let options = {
         method: 'post',
-        url: REDUX_BASE_URL + '/surveys'
-      }, o));
+        url: `${REDUX_BASE_URL}/surveys`
+      };
+      return $http(_.merge(options, o));
     };
 
     BenchmarkAPI.removeSurvey = function (id) {
       return $http({
         method: 'delete',
-        url: REDUX_BASE_URL + '/surveys/' + id
+        url: `${REDUX_BASE_URL}/surveys/${id}`
       });
     };
 
     BenchmarkAPI.updateSurvey = function (id, o) {
-      return $http(_.merge({
+      let options = {
         method: 'put',
-        url: REDUX_BASE_URL + '/surveys/' + id
-      }, o));
+        url: `${REDUX_BASE_URL}/surveys/${id}`
+      };
+      return $http(_.merge(options, o));
     };
 
     BenchmarkAPI.getRespondent = function (id) {
       return $http({
         method: 'get',
-        url: REDUX_BASE_URL + '/respondents/' + id
+        url: `${REDUX_BASE_URL}/respondents/${id}`
       });
     };
 
     BenchmarkAPI.listRespondents = function(o) {
-      return $http(_.merge({
+      let options = {
         method: 'get',
-        url: REDUX_BASE_URL + '/respondents'
-      }, o));
+        url: `${REDUX_BASE_URL}/respondents`
+      };
+      return $http(_.merge(options, o));
     };
 
     BenchmarkAPI.getRespondentReport = function (id) {
       return $http({
         method: 'get',
-        url: REDUX_BASE_URL + '/respondents/' + id + '/report'
+        url: `${REDUX_BASE_URL}/respondents/${id}/report`
       });
     };
 
     BenchmarkAPI.createRespondent = function (id, o) {
-      return $http(_.merge({
+      let options = {
         method: 'post',
-        url: REDUX_BASE_URL + '/surveys/' + id + '/respondents'
-      }, o));
+        url: `${REDUX_BASE_URL}/surveys/${id}/respondents`
+      };
+      return $http(_.merge(options, o));
     };
 
     BenchmarkAPI.updateRespondent = function (id, o) {
-      return $http(_.merge({
+      let options = {
         method: 'patch',
-        url: REDUX_BASE_URL + '/respondents/' + id
-      }, o));
+        url: `${REDUX_BASE_URL}/respondents/${id}`
+      };
+      return $http(_.merge(options, o));
     };
 
     BenchmarkAPI.getRespondents = function (id, o) {
-      return $http(_.merge({
+      let options = {
         method: 'get',
-        url: REDUX_BASE_URL + '/surveys/' + id + '/respondents'
-      }, o));
+        url: `${REDUX_BASE_URL}/surveys/${id}/respondents`
+      }
+      return $http(_.merge(options, o));
     };
 
     BenchmarkAPI.generateSurveyNumber = function (o, id) {
-      var options = {
+      let options = {
         method: 'post',
-        url: REDUX_BASE_URL + '/agencies_locations/' + id + '/twilio_number'
+        url: `${REDUX_BASE_URL}/agencies_locations/${id}/twilio_number`
       };
       return $http(_.merge(options, o));
     };
@@ -351,35 +360,36 @@
     BenchmarkAPI.getBlacklist = function () {
       return $http({
         method: 'get',
-        url: REDUX_BASE_URL + '/blacklist'
+        url: `${REDUX_BASE_URL}/blacklist`
       });
     };
 
     BenchmarkAPI.addBlacklist = function (o) {
-      return $http(_.merge({
+      let options = {
         method: 'post',
-        url: REDUX_BASE_URL + '/blacklist'
-      }, o));
+        url: `${REDUX_BASE_URL}/blacklist`
+      };
+      return $http(_.merge(options, o));
     };
 
     BenchmarkAPI.removeBlacklist = function (id) {
       return $http({
         method: 'delete',
-        url: REDUX_BASE_URL + '/blacklist/' + id
+        url: `${REDUX_BASE_URL}/blacklist/${id}`
       });
     };
 
     BenchmarkAPI.getCompetitors = function (agency_id) {
       return $http({
         method: 'get',
-        url: REDUX_BASE_URL + '/agencies/' + agency_id + '/competitors'
+        url: `${REDUX_BASE_URL}/agencies/${agency_id}/competitors`
       });
     };
 
     BenchmarkAPI.createCompetitor = function (competitor) {
       return $http({
         method: 'post',
-        url: REDUX_BASE_URL + '/competitors',
+        url: `${REDUX_BASE_URL}/competitors`,
         data: competitor
       });
     };
@@ -387,38 +397,38 @@
     BenchmarkAPI.removeCompetitor = function (competitor_id) {
       return $http({
         method: 'delete',
-        url: REDUX_BASE_URL + '/competitors/' + competitor_id
+        url: `${REDUX_BASE_URL}/competitors/${competitor_id}`
       });
     };
 
     BenchmarkAPI.updateCompetitor = function (competitor) {
       return $http({
         method: 'put',
-        url: REDUX_BASE_URL + '/competitors/' + competitor._id,
+        url: `${REDUX_BASE_URL}/competitors/${competitor._id}`,
         data: competitor
       });
     };
 
     BenchmarkAPI.getUsers = function (o) {
-      var options = {
+      let options = {
         method: 'get',
-        url: REDUX_BASE_URL + '/users'
+        url: `${REDUX_BASE_URL}/users`
       };
       return $http(_.merge(options, o));
     };
 
     BenchmarkAPI.getUser = function (o, id) {
-      var options = {
+      let options = {
         method: 'get',
-        url: REDUX_BASE_URL + '/users/' + id
+        url: `${REDUX_BASE_URL}/users/${id}`
       };
       return $http(_.merge(options, o));
     };
 
     BenchmarkAPI.updateUser = function (o, user_id) {
-      var options = {
+      let options = {
         method: 'patch',
-        url: REDUX_BASE_URL + '/users/' + user_id
+        url: `${REDUX_BASE_URL}/users/${user_id}`
       };
       return $http(_.merge(options, o));
     };
@@ -426,7 +436,7 @@
     BenchmarkAPI.createUser = function (user) {
       return $http({
         method: 'post',
-        url: REDUX_BASE_URL + '/users',
+        url: `${REDUX_BASE_URL}/users`,
         data: user
       });
     };
@@ -434,65 +444,66 @@
     BenchmarkAPI.removeUser = function (id) {
       return $http({
         method: 'delete',
-        url: REDUX_BASE_URL + '/users/' + id
+        url: `${REDUX_BASE_URL}/users/${id}`
       });
     };
 
     BenchmarkAPI.getLocations = function (o) {
-      var options = {
+      let options = {
         method: 'get',
-        url: REDUX_BASE_URL + '/locations'
+        url: `${REDUX_BASE_URL}/locations`
       };
       return $http(_.merge(options, o));
     };
 
     BenchmarkAPI.listAgenciesLocations = function (agency_id) {
-      var options = {
+      let options = {
         method: 'get',
-        url: REDUX_BASE_URL + '/agencies_locations',
-        params: {
-          limit: 100000
-        }
+        url: `${REDUX_BASE_URL}/agencies_locations`,
+        params: { limit: 100000 }
       };
-      if (agency_id)
-        options.params = {agency_id: agency_id, limit: 100000};
+
+      if (agency_id) options.params = { agency_id: agency_id, limit: 100000 };
       return $http(options);
     };
 
     BenchmarkAPI.getAgencyReviews = function (o) {
       var agency = o.agency_id ? o.agency_id : agency_id;
-      var options = {
+      let options = {
         method: 'get',
-        url: REDUX_BASE_URL + '/agencies/' + agency + '/reviews'
+        url: `${REDUX_BASE_URL}/agencies/${agency}/reviews`
       };
       return $http(_.merge(options, o));
     };
 
     BenchmarkAPI.getAgencyReviewFilters = function (o) {
-      return $http(_.merge({
+      let options = {
         method: 'get',
-        url: REDUX_BASE_URL + '/agencies/' + agency_id + '/reviews/filters'
-      }, o));
+        url: `${REDUX_BASE_URL}/agencies/${agency_id}/reviews/filters`
+      };
+      return $http(_.merge(options, o));
     };
 
     BenchmarkAPI.createReviewFilter = function (o) {
-      return $http(_.merge({
+      let options = {
         method: 'post',
-        url: REDUX_BASE_URL + '/review_filters'
-      }, o));
+        url: `${REDUX_BASE_URL}/review_filters`
+      };
+      return $http(_.merge(options, o));
     };
 
     BenchmarkAPI.removeReviewFilter = function (id, o) {
-      return $http(_.merge({
+      let options = {
         method: 'delete',
-        url: REDUX_BASE_URL + '/review_filters/' + id
-      }, o));
+        url: `${REDUX_BASE_URL}/review_filters/${id}`
+      };
+      return $http(_.merge(options, o));
     };
 
     BenchmarkAPI.getLocation = function (location_id) {
       return $http({
         method: 'get',
-        url: REDUX_BASE_URL + '/agencies_locations/' + location_id
+        url: `${REDUX_BASE_URL}/agencies_locations/${location_id}`
       });
     };
 
