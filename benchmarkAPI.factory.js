@@ -1,16 +1,16 @@
-(function (ng) {
+((ng) => {
   'use strict';
 
   var module = ng.module('benchmarkAPI', ['benchmark.auth']);
 
-  module.factory('BenchmarkAPI', function ($http, URLS, AuthService) {
+  module.factory('BenchmarkAPI', ($http, URLS, AuthService) => {
     var BenchmarkAPI = {};
     var user = AuthService.getUser();
     var BASE_URL = URLS.BENCHMARK_API_URL;
     var REDUX_BASE_URL = URLS.BENCHMARK_API_REDUX_URL;
     var agency_id = user.agency_id;
 
-    BenchmarkAPI.createProvider = function (location_id, provider) {
+    BenchmarkAPI.createProvider = (location_id, provider) => {
       return $http({
         method: 'post',
         url: `${BASE_URL}/locations/${location_id}/providers`,
@@ -18,7 +18,7 @@
       });
     };
 
-    BenchmarkAPI.createLocation = function (location) {
+    BenchmarkAPI.createLocation = (location) => {
       return $http({
         method: 'post',
         url: `${BASE_URL}/locations`,
@@ -26,7 +26,7 @@
       });
     };
 
-    BenchmarkAPI.updateLocation = function (location) {
+    BenchmarkAPI.updateLocation = (location) => {
       return $http({
         method: 'put',
         url: `${BASE_URL}/locations/${location._id}`,
@@ -34,7 +34,7 @@
       });
     };
 
-    BenchmarkAPI.updateCompanyLocation = function (agency_id, location) {
+    BenchmarkAPI.updateCompanyLocation = (agency_id, location) => {
       return $http({
         method: 'put',
         url: `${BASE_URL}/agencies/${agency_id}/locations/${location._id}`,
@@ -42,7 +42,7 @@
       });
     };
 
-    BenchmarkAPI.contactSupport = function (contact) {
+    BenchmarkAPI.contactSupport = (contact) => {
       return $http({
         method: 'post',
         url: `${BASE_URL}/support_requests`,
@@ -50,7 +50,7 @@
       });
     };
 
-    BenchmarkAPI.searchPlace = function (place) {
+    BenchmarkAPI.searchPlace = (place) => {
       return $http({
         method: 'get',
         url: `${BASE_URL}/search/locations`,
@@ -58,7 +58,7 @@
       });
     };
 
-    BenchmarkAPI.scheduleSummaries = function (o) {
+    BenchmarkAPI.scheduleSummaries = (o) => {
       let options = {
         method: 'get',
         url: `${BASE_URL}/run/summaries`,
@@ -66,7 +66,7 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.scheduleInsights = function (o) {
+    BenchmarkAPI.scheduleInsights = (o) => {
       let options = {
         method: 'get',
         url: `${BASE_URL}/run/insights`,
@@ -74,14 +74,14 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.runSentimentAnalysis = function () {
+    BenchmarkAPI.runSentimentAnalysis = () => {
       return $http({
         method: 'get',
         url: `${BASE_URL}/run/reviews`
       });
     };
 
-    BenchmarkAPI.runLocationSentimentAnalysis = function (location_id) {
+    BenchmarkAPI.runLocationSentimentAnalysis = (location_id) => {
       return $http({
         method: 'get',
         url: `${BASE_URL}/run/reviews`,
@@ -89,7 +89,7 @@
       });
     };
 
-    BenchmarkAPI.getStats = function () {
+    BenchmarkAPI.getStats = () => {
       return $http({
         method: 'get',
         url: `${BASE_URL}/insights`,
@@ -97,28 +97,28 @@
       });
     };
 
-    BenchmarkAPI.removeCompanyLocation = function (agency_id, location_id) {
+    BenchmarkAPI.removeCompanyLocation = (agency_id, location_id) => {
       return $http({
         method: 'delete',
         url: `${BASE_URL}/agencies/${agency_id}/locations/${location_id}`
       });
     };
 
-    BenchmarkAPI.removeLocation = function (location) {
+    BenchmarkAPI.removeLocation = (location) => {
       return $http({
         method: 'delete',
         url: `${BASE_URL}/locations/${location._id}`
       });
     };
 
-    BenchmarkAPI.getLocationCompetitors = function (agency_id, location_id) {
+    BenchmarkAPI.getLocationCompetitors = (agency_id, location_id) => {
       return $http({
         method: 'get',
         url: `${BASE_URL}/agencies/${agency_id}/locations/${location_id}/competitors`
       });
     };
 
-    BenchmarkAPI.connectLocation = function (agency_id, location) {
+    BenchmarkAPI.connectLocation = (agency_id, location) => {
       return $http({
         method: 'post',
         url: `${BASE_URL}/agencies/${agency_id}/locations/${location.selected._id}`,
@@ -126,7 +126,7 @@
       });
     };
 
-    BenchmarkAPI.getAgencyTimeStats = function (o) {
+    BenchmarkAPI.getAgencyTimeStats = (o) => {
       let options = {
         method: 'get',
         url: `${BASE_URL}/agencies/${agency_id}/stats/quality_score`
@@ -134,7 +134,7 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.getLocationTimeStats = function (o) {
+    BenchmarkAPI.getLocationTimeStats = (o) => {
       let options = {
         method: 'get',
         url: `${BASE_URL}/agencies/${agency_id}/locations/${o.location_id}/stats/quality_score`
@@ -142,7 +142,7 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.getLocationCompetitorsTimeStats = function (o) {
+    BenchmarkAPI.getLocationCompetitorsTimeStats = (o) => {
       let options = {
         method: 'get',
         url: `${BASE_URL}/agencies/${agency_id}/locations/${o.location_id}/competitors/stats/quality_score`
@@ -150,7 +150,7 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.getLocationReviews = function (o, location_id) {
+    BenchmarkAPI.getLocationReviews = (o, location_id) => {
       let options = {
         method: 'get',
         url: `${BASE_URL}/agencies/${agency_id}/locations/${location_id}/reviews`
@@ -158,7 +158,7 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.getLocationReviewTrends = function (o, location_id) {
+    BenchmarkAPI.getLocationReviewTrends = (o, location_id) => {
       let options = {
         method: 'get',
         url: `${BASE_URL}/agencies/${agency_id}/locations/${location_id}/keywords`
@@ -166,7 +166,7 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.correctSentiment = function (o) {
+    BenchmarkAPI.correctSentiment = (o) => {
       let options = {
         method: 'post',
         url: `${BASE_URL}/agencies/${agency_id}/sentiment_corrections`
@@ -174,14 +174,14 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.getNotifications = function (id) {
+    BenchmarkAPI.getNotifications = (id) => {
       return $http({
         method: 'get',
         url: `${BASE_URL}/users/${id}/notifications`
       });
     };
 
-    BenchmarkAPI.updateNotification = function (id, o) {
+    BenchmarkAPI.updateNotification = (id, o) => {
       let options = {
         method: 'patch',
         url: `${BASE_URL}/notifications/${id}`
@@ -190,14 +190,14 @@
     };
 
     // API-REDUX ENDPOINTS
-    BenchmarkAPI.getAgency = function (agency_id) {
+    BenchmarkAPI.getAgency = (agency_id) => {
       return $http({
         method: 'get',
         url: `${REDUX_BASE_URL}/agencies/${agency_id}`
       });
     };
 
-    BenchmarkAPI.getAgencies = function (o) {
+    BenchmarkAPI.getAgencies = (o) => {
       let options = {
         method: 'get',
         url: `${REDUX_BASE_URL}/agencies`
@@ -205,7 +205,7 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.createAgency = function (agency) {
+    BenchmarkAPI.createAgency = (agency) => {
       return $http({
         method: 'post',
         url: `${REDUX_BASE_URL}/agencies`,
@@ -213,14 +213,14 @@
       });
     };
 
-    BenchmarkAPI.removeAgency = function (id) {
+    BenchmarkAPI.removeAgency = (id) => {
       return $http({
         method: 'delete',
         url: `${REDUX_BASE_URL}/agencies/${id}`
       });
     };
 
-    BenchmarkAPI.updateAgency = function (agency) {
+    BenchmarkAPI.updateAgency = (agency) => {
       return $http({
         method: 'patch',
         url: `${REDUX_BASE_URL}/agencies/${agency._id}`
@@ -228,14 +228,14 @@
       });
     };
 
-    BenchmarkAPI.getRecommendations = function () {
+    BenchmarkAPI.getRecommendations = () => {
       return $http({
         method: 'get',
         url: `${REDUX_BASE_URL}/recommendations`
       });
     };
 
-    BenchmarkAPI.createRecommendations = function (recommendation) {
+    BenchmarkAPI.createRecommendations = (recommendation) => {
       return $http({
         method: 'post',
         url: `${REDUX_BASE_URL}/recommendations`,
@@ -243,21 +243,21 @@
       });
     };
 
-    BenchmarkAPI.getRecommendation = function (id) {
+    BenchmarkAPI.getRecommendation = (id) => {
       return $http({
         method: 'get',
         url: `${REDUX_BASE_URL}/recommendations/${id}`
       });
     };
 
-    BenchmarkAPI.deleteRecommendation = function (id) {
+    BenchmarkAPI.deleteRecommendation = (id) => {
       return $http({
         method: 'delete',
         url: `${REDUX_BASE_URL}/recommendations/${id}`
       });
     };
 
-    BenchmarkAPI.updateRecommendation = function (id, recommendation) {
+    BenchmarkAPI.updateRecommendation = (id, recommendation) => {
       return $http({
         method: 'patch',
         url: `${REDUX_BASE_URL}/recommendations/${id}`,
@@ -265,7 +265,7 @@
       });
     };
 
-    BenchmarkAPI.getSurveys = function (o) {
+    BenchmarkAPI.getSurveys = (o) => {
       let options = {
         method: 'get',
         url: `${REDUX_BASE_URL}/surveys`
@@ -273,14 +273,14 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.getSurvey = function (id) {
+    BenchmarkAPI.getSurvey = (id) => {
       return $http({
         method: 'get',
         url: `${REDUX_BASE_URL}/surveys/${id}`
       });
     };
 
-    BenchmarkAPI.createSurvey = function (o) {
+    BenchmarkAPI.createSurvey = (o) => {
       let options = {
         method: 'post',
         url: `${REDUX_BASE_URL}/surveys`
@@ -288,14 +288,14 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.removeSurvey = function (id) {
+    BenchmarkAPI.removeSurvey = (id) => {
       return $http({
         method: 'delete',
         url: `${REDUX_BASE_URL}/surveys/${id}`
       });
     };
 
-    BenchmarkAPI.updateSurvey = function (id, o) {
+    BenchmarkAPI.updateSurvey = (id, o) => {
       let options = {
         method: 'put',
         url: `${REDUX_BASE_URL}/surveys/${id}`
@@ -303,7 +303,7 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.getRespondent = function (id) {
+    BenchmarkAPI.getRespondent = (id) => {
       return $http({
         method: 'get',
         url: `${REDUX_BASE_URL}/respondents/${id}`
@@ -318,14 +318,14 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.getRespondentReport = function (id) {
+    BenchmarkAPI.getRespondentReport = (id) => {
       return $http({
         method: 'get',
         url: `${REDUX_BASE_URL}/respondents/${id}/report`
       });
     };
 
-    BenchmarkAPI.createRespondent = function (id, o) {
+    BenchmarkAPI.createRespondent = (id, o) => {
       let options = {
         method: 'post',
         url: `${REDUX_BASE_URL}/surveys/${id}/respondents`
@@ -333,7 +333,7 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.updateRespondent = function (id, o) {
+    BenchmarkAPI.updateRespondent = (id, o) => {
       let options = {
         method: 'patch',
         url: `${REDUX_BASE_URL}/respondents/${id}`
@@ -341,7 +341,7 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.getRespondents = function (id, o) {
+    BenchmarkAPI.getRespondents = (id, o) => {
       let options = {
         method: 'get',
         url: `${REDUX_BASE_URL}/surveys/${id}/respondents`
@@ -349,7 +349,7 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.generateSurveyNumber = function (o, id) {
+    BenchmarkAPI.generateSurveyNumber = (o, id) => {
       let options = {
         method: 'post',
         url: `${REDUX_BASE_URL}/agencies_locations/${id}/twilio_number`
@@ -357,14 +357,14 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.getBlacklist = function () {
+    BenchmarkAPI.getBlacklist = () => {
       return $http({
         method: 'get',
         url: `${REDUX_BASE_URL}/blacklist`
       });
     };
 
-    BenchmarkAPI.addBlacklist = function (o) {
+    BenchmarkAPI.addBlacklist = (o) => {
       let options = {
         method: 'post',
         url: `${REDUX_BASE_URL}/blacklist`
@@ -372,21 +372,21 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.removeBlacklist = function (id) {
+    BenchmarkAPI.removeBlacklist = (id) => {
       return $http({
         method: 'delete',
         url: `${REDUX_BASE_URL}/blacklist/${id}`
       });
     };
 
-    BenchmarkAPI.getCompetitors = function (agency_id) {
+    BenchmarkAPI.getCompetitors = (agency_id) => {
       return $http({
         method: 'get',
         url: `${REDUX_BASE_URL}/agencies/${agency_id}/competitors`
       });
     };
 
-    BenchmarkAPI.createCompetitor = function (competitor) {
+    BenchmarkAPI.createCompetitor = (competitor) => {
       return $http({
         method: 'post',
         url: `${REDUX_BASE_URL}/competitors`,
@@ -394,14 +394,14 @@
       });
     };
 
-    BenchmarkAPI.removeCompetitor = function (competitor_id) {
+    BenchmarkAPI.removeCompetitor = (competitor_id) => {
       return $http({
         method: 'delete',
         url: `${REDUX_BASE_URL}/competitors/${competitor_id}`
       });
     };
 
-    BenchmarkAPI.updateCompetitor = function (competitor) {
+    BenchmarkAPI.updateCompetitor = (competitor) => {
       return $http({
         method: 'put',
         url: `${REDUX_BASE_URL}/competitors/${competitor._id}`,
@@ -409,7 +409,7 @@
       });
     };
 
-    BenchmarkAPI.getUsers = function (o) {
+    BenchmarkAPI.getUsers = (o) => {
       let options = {
         method: 'get',
         url: `${REDUX_BASE_URL}/users`
@@ -417,7 +417,7 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.getUser = function (o, id) {
+    BenchmarkAPI.getUser = (o, id) => {
       let options = {
         method: 'get',
         url: `${REDUX_BASE_URL}/users/${id}`
@@ -425,7 +425,7 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.updateUser = function (o, user_id) {
+    BenchmarkAPI.updateUser = (o, user_id) => {
       let options = {
         method: 'patch',
         url: `${REDUX_BASE_URL}/users/${user_id}`
@@ -433,7 +433,7 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.createUser = function (user) {
+    BenchmarkAPI.createUser = (user) => {
       return $http({
         method: 'post',
         url: `${REDUX_BASE_URL}/users`,
@@ -441,14 +441,14 @@
       });
     };
 
-    BenchmarkAPI.removeUser = function (id) {
+    BenchmarkAPI.removeUser = (id) => {
       return $http({
         method: 'delete',
         url: `${REDUX_BASE_URL}/users/${id}`
       });
     };
 
-    BenchmarkAPI.getLocations = function (o) {
+    BenchmarkAPI.getLocations = (o) => {
       let options = {
         method: 'get',
         url: `${REDUX_BASE_URL}/locations`
@@ -456,7 +456,7 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.listAgenciesLocations = function (agency_id) {
+    BenchmarkAPI.listAgenciesLocations = (agency_id) => {
       let options = {
         method: 'get',
         url: `${REDUX_BASE_URL}/agencies_locations`,
@@ -467,7 +467,7 @@
       return $http(options);
     };
 
-    BenchmarkAPI.getAgencyReviews = function (o) {
+    BenchmarkAPI.getAgencyReviews = (o) => {
       var agency = o.agency_id ? o.agency_id : agency_id;
       let options = {
         method: 'get',
@@ -476,7 +476,7 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.getAgencyReviewFilters = function (o) {
+    BenchmarkAPI.getAgencyReviewFilters = (o) => {
       let options = {
         method: 'get',
         url: `${REDUX_BASE_URL}/agencies/${agency_id}/reviews/filters`
@@ -484,7 +484,7 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.createReviewFilter = function (o) {
+    BenchmarkAPI.createReviewFilter = (o) => {
       let options = {
         method: 'post',
         url: `${REDUX_BASE_URL}/review_filters`
@@ -492,7 +492,7 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.removeReviewFilter = function (id, o) {
+    BenchmarkAPI.removeReviewFilter = (id, o) => {
       let options = {
         method: 'delete',
         url: `${REDUX_BASE_URL}/review_filters/${id}`
@@ -500,7 +500,7 @@
       return $http(_.merge(options, o));
     };
 
-    BenchmarkAPI.getLocation = function (location_id) {
+    BenchmarkAPI.getLocation = (location_id) => {
       return $http({
         method: 'get',
         url: `${REDUX_BASE_URL}/agencies_locations/${location_id}`

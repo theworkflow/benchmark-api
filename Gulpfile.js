@@ -1,22 +1,26 @@
-var gulp = require('gulp');
-var gulpBump = require('gulp-bump');
+const Path = require('path');
+const Gulp = require('gulp');
+const GulpBump = require('gulp-bump');
 
-function bump(opts) {
-  opts = opts || {};
-  gulp.src(['./bower.json', './package.json'])
-    .pipe(gulpBump(opts))
-    .pipe(gulp.dest('./'));
+const SOURCES = [
+  Path.resolve(__dirname, 'bower.json'),
+  Path.resolve(__dirname, 'package.json')
+];
+
+function bump(opts = {}) {
+  Gulp.src(SOURCES)
+    .pipe(GulpBump(opts))
+    .pipe(Gulp.dest('./'));
 }
 
-gulp.task('default', function(){
+Gulp.task('default', () => {
   bump();
 });
 
-gulp.task('minor', function() {
+Gulp.task('minor', () => {
   bump();
 });
 
-gulp.task('major', function(){
+Gulp.task('major', () => {
   bump({type: 'major'});
 });
-
